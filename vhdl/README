@@ -1,0 +1,10 @@
+The FPGA design is intended for the Digilent S3BOARD. The FX2 board plugs into
+port A2. The FPGA asserts SLOE and SLRD, and deasserts SLWR and PKTEND. It also
+drives "10" on the FIFOADR[0..1] lines to select EP6. The FX2 drives the IFCLK
+at 48MHz and dumps incoming USB packets onto the FD[0..7] lines, driving FLAGC
+("gotData" in the VHDL) high during the rising edge of IFCLK to clock a byte
+into the FPGA, which maintains a 16-bit checksum which it displays on the S3BOARD's
+seven-segment displays. The bit pattern of the last byte clocked in is displayed
+on the LEDs.
+
+- Chris McClelland 2009-08-08

@@ -1,0 +1,9 @@
+The PCB is a small interface card with an FX2LP micro and a connector which allows
+it to be plugged into a Digilent S3BOARD FPGA starter kit. In addition to the FPGA
+interface there is a HiSpeed USB connector and an SD-card slot.
+
+This board was made with Eagle5 (http://www.cadsoft.de) and etched at home using
+tools from http://www.megauk.com. It is dual-layer, and has large octagonal vias
+to make drilling easier.
+
+- Chris McClelland 2009-08-08

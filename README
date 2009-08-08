@@ -1,0 +1,19 @@
+FX2FPGA the FX2FPGA board is a small PCB which plugs into the A2 port of a
+Digilent S3BOARD. It offers a Hi-Speed USB port and an SD-card slot, and uses
+the Cypress FX2LP chip to manage USB transfers.
+
+  pcb - the design of the printed circuit board
+  vhdl - the FPGA design; you'll need Xilinx ISE WebPack to use this
+  benchmark - benchmark host code using libusb
+
+The benchmark code just measures the time taken to dump 1Mbyte of data from a
+file to EP6 of the FX2LP and prints a checksum and a throughput in Mbyte/s. The
+checksum displayed by the FPGA board and the checksum output by the benchmark
+should match.
+
+The benchmark program assumes the FX2 chip is running the firmware from the
+fx2tools package which you can get from here:
+
+http://www.makestuff.eu/wordpress/?page_id=343
+
+- Chris McClelland 2009-08-08

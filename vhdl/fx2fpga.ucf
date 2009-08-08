@@ -1,0 +1,73 @@
+#
+# Copyright (C) 2009 Chris McClelland
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#NET "clk50" LOC = "T9";  # Integral 50MHz clock
+NET "reset" LOC = "L14";
+NET "ifclk" LOC = "C9" | IOSTANDARD=LVCMOS33;
+
+NET "fd<0>" LOC = "E6" | IOSTANDARD=LVCMOS33;
+NET "fd<1>" LOC = "D5" | IOSTANDARD=LVCMOS33;
+NET "fd<2>" LOC = "C5" | IOSTANDARD=LVCMOS33;
+NET "fd<3>" LOC = "D6" | IOSTANDARD=LVCMOS33;
+NET "fd<4>" LOC = "C6" | IOSTANDARD=LVCMOS33;
+NET "fd<5>" LOC = "E7" | IOSTANDARD=LVCMOS33;
+NET "fd<6>" LOC = "C7" | IOSTANDARD=LVCMOS33;
+NET "fd<7>" LOC = "D7" | IOSTANDARD=LVCMOS33;
+
+NET "flagA" LOC = "C8" | IOSTANDARD=LVCMOS33;
+NET "flagB" LOC = "D8" | IOSTANDARD=LVCMOS33;
+NET "gotData" LOC = "D10" | IOSTANDARD=LVCMOS33;
+
+NET "fifoAddr<0>" LOC = "A5" | IOSTANDARD=LVCMOS33;
+NET "fifoAddr<1>" LOC = "B6" | IOSTANDARD=LVCMOS33;
+
+NET "slrd" LOC = "A13" | IOSTANDARD=LVCMOS33;
+NET "sloe" LOC = "A4" | IOSTANDARD=LVCMOS33;
+NET "slwr" LOC = "B14" | IOSTANDARD=LVCMOS33;
+NET "pktEnd" LOC = "B7" | IOSTANDARD=LVCMOS33;
+
+NET "led<0>" LOC = "K12";
+NET "led<1>" LOC = "P14";
+NET "led<2>" LOC = "L12";
+NET "led<3>" LOC = "N14";
+NET "led<4>" LOC = "P13";
+NET "led<5>" LOC = "N12";
+NET "led<6>" LOC = "P12";
+NET "led<7>" LOC = "P11";
+
+NET "anode<0>"  LOC = "D14";
+NET "anode<1>"  LOC = "G14";
+NET "anode<2>"  LOC = "F14";
+NET "anode<3>"  LOC = "E13";
+
+NET "sseg<7>"  LOC = "P16"; # dicimal point
+NET "sseg<6>"  LOC = "E14"; # segment a
+NET "sseg<5>"  LOC = "G13"; # segment b
+NET "sseg<4>"  LOC = "N15"; # segment c
+NET "sseg<3>"  LOC = "P15"; # segment d
+NET "sseg<2>"  LOC = "R16"; # segment e
+NET "sseg<1>"  LOC = "F13"; # segment f 
+NET "sseg<0>"  LOC = "N16"; # segment g 
+
+NET "sw<0>"  LOC = "F12";
+NET "sw<1>"  LOC = "G12";
+
+#========================================================
+# Timing constraint of S3 50-MHz onboard oscillator
+# name of the clock signal is clk
+#========================================================
+NET "ifclk" TNM_NET = "ifclk";
+TIMESPEC "TS_clk" = PERIOD "ifclk" 20 ns HIGH 50 %;
