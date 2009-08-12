@@ -57,6 +57,9 @@ NET "pd<7>"       LOC = "B13" | IOSTANDARD=LVCMOS33;   # PD7
 NET "slrd"        LOC = "A13" | IOSTANDARD=LVCMOS33;
 NET "slwr"        LOC = "B14" | IOSTANDARD=LVCMOS33;
 
+NET "dummy"       LOC = "D9" | IOSTANDARD=LVCMOS33;
+
+
 # On-board peripheral signals
 NET "led_out<0>" LOC = "K12";
 NET "led_out<1>" LOC = "P14";

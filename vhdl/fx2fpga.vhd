@@ -28,14 +28,15 @@ entity fx2fpga is
 		ifclk    : in std_logic;
 
 		-- Unused connections must be configured as inputs
-		flagA    : out std_logic;
-		flagB    : out std_logic;
-		int0     : out std_logic;                     -- PA0
-		int1     : out std_logic;                     -- PA1
-		pa3      : out std_logic;                     -- PA3
-		pa7      : out std_logic;                     -- PA7
-		clkout   : out std_logic;
-		pd       : out std_logic_vector(7 downto 0);
+		flagA    : in std_logic;
+		flagB    : in std_logic;
+		int0     : in std_logic;                     -- PA0
+		int1     : in std_logic;                     -- PA1
+		pa3      : in std_logic;                     -- PA3
+		pa7      : in std_logic;                     -- PA7
+		clkout   : in std_logic;
+		pd       : in std_logic_vector(7 downto 0);
+		dummy    : out std_logic;                    -- Dummy output, not connected to FX2
 
 		-- Data & control from the FX2
 		fd       : in std_logic_vector(7 downto 0);
@@ -78,15 +79,11 @@ begin
 	-- binary counter
 	counter_next <= counter + 1;
 	
-	-- Tri-state all the unused lines
-	flagA <= 'Z';
-	flagB <= 'Z';
-	int0 <= 'Z';
-	int1 <= 'Z';
-	pa3 <= 'Z';
-	pa7 <= 'Z';
-	clkout <= 'Z';
-	pd <= (others => 'Z');
+	-- Tri-stating doesn't seem to work...set them all as inputs
+	dummy <=
+		flagA and flagB and int0 and int1 and pa3 and pa7 and clkout and
+		pd(0) and pd(1) and pd(1) and pd(2) and pd(3) and
+		pd(4) and pd(5) and pd(6) and pd(7);
 	
 	led_out <= led;
 
