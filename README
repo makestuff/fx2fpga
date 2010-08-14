@@ -1,19 +1,17 @@
-The FX2FPGA board is a small PCB which plugs into the A2 port of a Digilent
-S3BOARD. It offers a Hi-Speed USB port and an SD-card slot, and uses the
-Cypress FX2LP chip to manage USB transfers.
+The FX2FPGA board is a small PCB which plugs into the A2 port of a Digilent S3BOARD. It offers a
+Hi-Speed USB port and an SD-card slot, and uses the Cypress FX2LP chip to manage USB transfers.
 
     pcb - the design of the printed circuit board
     vhdl - the FPGA design; you'll need Xilinx ISE WebPack to use this
-    benchmark - benchmark host code using libusb
 
-The benchmark code just measures the time taken to dump 1Mbyte of data from a
-file to EP6 of the FX2LP and prints a checksum and a throughput in Mbyte/s. The
-checksum displayed by the FPGA board and the checksum output by the benchmark
-should match.
+There are some utilities in the fx2tools package for interacting with the FX2LP, including a
+bulk-write with benchmark and checksum options. Data written to bulk EP6 of the FX2LP will be
+written to the FPGA. The FPGA keeps a cumulative checksum of the incoming data, and displays it on
+the FPGA board's 7-seg display. The FPGA's checksum should be the same as the one calculated by the
+host side.
 
-The benchmark program assumes the FX2 chip is running the firmware from the
-fx2tools package which you can get from here:
+You can get the bulk write tool and the FX2LP firmware from here:
 
 http://www.makestuff.eu/wordpress/?page_id=343
 
-- Chris McClelland 2009-08-08
+- Chris McClelland 2010-08-14
